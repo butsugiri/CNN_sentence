@@ -3,7 +3,7 @@ Re-implementation of `Kim, Yoon. "Convolutional neural networks for sentence cla
 
 # Requirements
 * Python 3.*
-* Chainer ver. 1.19
+* Chainer ver. 1.19.0 (or more)
 
 # Usage
 ```
@@ -17,7 +17,6 @@ Re-implementation of `Kim, Yoon. "Convolutional neural networks for sentence cla
   --epoch EPOCH         number of epochs to learn
   --batchsize BATCHSIZE
                         learning minibatch size
-  --nunits NUNITS       number of units
 ```
 
 # Data format for input data

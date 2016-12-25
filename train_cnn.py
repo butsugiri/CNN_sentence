@@ -49,22 +49,24 @@ def main(args):
         ['epoch', 'main/loss', 'validation/main/loss',
          'main/accuracy', 'validation/main/accuracy']))
     trainer.extend(extensions.ProgressBar(update_interval=10))
+    # take a shapshot when the model achieves highest accuracy in dev set
+    trainer.extend(extensions.snapshot_object(
+        model, 'model_epoch_{.updater.epoch}',
+        trigger=chainer.training.triggers.MaxValueTrigger('validation/main/accuracy')))
     trainer.run()
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser=argparse.ArgumentParser()
     parser.add_argument('--gpu  ', dest='gpu', type=int,
                         default=-1, help='negative value indicates CPU')
     parser.add_argument('--epoch', dest='epoch', type=int,
                         default=5, help='number of epochs to learn')
     parser.add_argument('--batchsize', dest='batchsize', type=int,
                         default=32, help='learning minibatch size')
-    parser.add_argument('--nunits', dest='nunits', type=int,
-                        default=5, help='number of units')
     parser.add_argument('--glove', dest='glove_path', type=str,
                         default="../../disco_parse/data/glove_model/glove.6B.100d.txt", help='Pretrained glove vector')
     parser.add_argument('--test', action='store_true', help='use tiny dataset')
     parser.set_defaults(test=False)
 
-    args = parser.parse_args()
+    args=parser.parse_args()
     main(args)
