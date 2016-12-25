@@ -10,7 +10,7 @@ from chainer import Link, Chain
 
 class YoonCNN(Chain):
 
-    def __init__(self, n_vocab, input_channel, output_channel, n_units, n_label, train=True):
+    def __init__(self, n_vocab, input_channel, output_channel, n_label, train=True):
         super(YoonCNN, self).__init__(
             embed=L.EmbedID(n_vocab, 100),  # 100: embedding vector size
             conv3=L.Convolution2D(

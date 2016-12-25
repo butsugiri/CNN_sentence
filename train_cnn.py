@@ -23,7 +23,7 @@ def main(args):
 
     vocab = data_processor.vocab
     cnn = YoonCNN(n_vocab=len(vocab), input_channel=1,
-                  output_channel=10, n_units=args.nunits, n_label=2)
+                  output_channel=10, n_label=2)
     cnn.load_glove_embeddings(args.glove_path, data_processor.vocab)
     model = L.Classifier(cnn)
     if args.gpu >= 0:
