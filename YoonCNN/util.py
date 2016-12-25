@@ -6,7 +6,7 @@ import six
 from chainer import cuda
 
 
-# basically this is same as the one on chainer's reporter
+# basically this is same as the one on chainer's repo.
 # I added padding option (paddin=0) to be always true
 def concat_examples(batch, device=None, padding=0):
     if len(batch) == 0:
